@@ -22,6 +22,7 @@ function finish(){
   document.getElementById('out').innerHTML=`${plan.food}<br>📅 Date: ${dateText}<br>🕐 Time: ${timeText}`;
   sendToGoogleSheet();
   show(5);
+  setTimeout(() => show(6), 2500);
 }
 
 function sendToGoogleSheet(){
