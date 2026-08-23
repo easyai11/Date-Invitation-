@@ -1,1 +1,121 @@
-<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Will you go on a date with me?</title><link rel="stylesheet" href="style.css"></head><body><div class="wrap"><div class="top">♥　♥　♥　♡</div><section id="s1" class="card active"><div class="icon">💌</div><h1>Will you go on a date<br>with me?</h1><p>I've been wanting to ask you this for a little while 💗</p><div class="row"><button class="pink" onclick="yes()">Yes 💕</button><button class="outline" id="no" onclick="nope()">No</button></div></section><section id="s2" class="card"><h1>no way. NO WAY. 😳</h1><p>I just had to ask again...</p><button class="pink" onclick="show(3)">Okay, okay 💗</button></section><section id="s3" class="card"><h1>What are we feeling? ✨</h1><p>Pick the vibe for our date.</p><div class="grid"><button onclick="pick('Pizza 🍕')">🍕<span>Pizza</span></button><button onclick="pick('Sushi 🍣')">🍣<span>Sushi</span></button><button onclick="pick('Burgers 🍔')">🍔<span>Burgers</span></button><button onclick="pick('Dessert 🍰')">🍰<span>Dessert</span></button><button onclick="pick('Movie 🎬')">🎬<span>Movie</span></button><button onclick="pick('Coffee ☕')">☕<span>Coffee</span></button></div></section><section id="s4" class="card"><h1>So... when are you free? 📅</h1><p>Choose a day.</p><label for="date">Date</label><input id="date" type="date"><label for="time">Time</label><input id="time" type="time"><button class="pink" onclick="finish()">This works for me 💗</button></section><section id="s5" class="card"><div class="icon">💖</div><h1>It's a date! 💗</h1><p>Glad you said yes. I'm coming to get you ❤️</p><div class="summary"><b>Our plan</b><div id="out"></div></div><button class="pink" onclick="show(6)">One more thing 💌</button></section><section id="s6" class="card"><div class="icon">🥰</div><h1>Can't wait to see you soon! 💗</h1><p class="greeting">I'm really excited for our date.<br>See you soon! ✨</p><div class="hearts">♥　♡　♥　♡　♥</div><button class="pink" onclick="show(1)">Start again ↻</button></section></div><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Will you go on a date with me?</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scene-decor" aria-hidden="true">
+  <span class="float-heart h1">♥</span><span class="float-heart h2">♡</span><span class="float-heart h3">💗</span>
+  <span class="star st1">✦</span><span class="star st2">✧</span><span class="star st3">★</span><span class="star st4">✦</span>
+  <span class="cat cat1">🐱</span><span class="cat cat2">🐾</span><span class="teddy">🧸</span>
+</div>
+<div id="blast" class="blast" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="top">♥　♥　♥　♡</div>
+
+  <section id="s1" class="card active">
+    <div class="icon">💌</div>
+    <h1>Will you go on a date<br>with me?</h1>
+    <p>I've been wanting to ask you this for a little while 💗</p>
+    <div class="row">
+      <button class="pink" onclick="yes()">Yes 💕</button>
+      <button class="outline" id="no" onclick="nope()">No</button>
+    </div>
+  </section>
+
+  <section id="s2" class="card">
+    <h1>no way. NO WAY. 😳</h1>
+    <p>I just had to ask again...</p>
+    <button class="pink" onclick="show(3)">Okay, okay 💗</button>
+  </section>
+
+  <section id="s3" class="card">
+    <h1>What are we feeling? ✨</h1>
+    <p>Pick as many as you like.</p>
+
+    <div class="grid">
+      <button class="choice" onclick="toggleChoice(this,'Chinese 🥡')">🥡<span>Chinese</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Chaat 🌶️')">🌶️<span>Chaat</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Momos 🥟')">🥟<span>Momos</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Pizza 🍕')">🍕<span>Pizza</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Burgers 🍔')">🍔<span>Burgers</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Dessert 🍰')">🍰<span>Dessert</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Coffee ☕')">☕<span>Coffee</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Soda 🥤')">🥤<span>Soda</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Mocktail 🍹')">🍹<span>Mocktail</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Movie 🎬')">🎬<span>Movie</span></button>
+      <button class="choice" onclick="toggleChoice(this,'Long Drive 🚗')">🚗<span>Long Drive</span></button>
+    </div>
+
+    <p id="selectedText" class="selected">Nothing selected yet</p>
+    <button class="pink" onclick="continueFromFood()">Continue 💗</button>
+  </section>
+
+  <section id="s4" class="card">
+    <h1>So... when are you free? 📅</h1>
+    <p>Choose a day and time.</p>
+    <label for="date">Date</label>
+    <input id="date" type="date">
+    <label for="time">Time</label>
+    <select id="time">
+      <option value="">Select a time</option>
+      <option value="00:00">12:00 AM</option><option value="00:30">12:30 AM</option>
+      <option value="01:00">1:00 AM</option><option value="01:30">1:30 AM</option>
+      <option value="02:00">2:00 AM</option><option value="02:30">2:30 AM</option>
+      <option value="03:00">3:00 AM</option><option value="03:30">3:30 AM</option>
+      <option value="04:00">4:00 AM</option><option value="04:30">4:30 AM</option>
+      <option value="05:00">5:00 AM</option><option value="05:30">5:30 AM</option>
+      <option value="06:00">6:00 AM</option><option value="06:30">6:30 AM</option>
+      <option value="07:00">7:00 AM</option><option value="07:30">7:30 AM</option>
+      <option value="08:00">8:00 AM</option><option value="08:30">8:30 AM</option>
+      <option value="09:00">9:00 AM</option><option value="09:30">9:30 AM</option>
+      <option value="10:00">10:00 AM</option><option value="10:30">10:30 AM</option>
+      <option value="11:00">11:00 AM</option><option value="11:30">11:30 AM</option>
+      <option value="12:00">12:00 PM</option><option value="12:30">12:30 PM</option>
+      <option value="13:00">1:00 PM</option><option value="13:30">1:30 PM</option>
+      <option value="14:00">2:00 PM</option><option value="14:30">2:30 PM</option>
+      <option value="15:00">3:00 PM</option><option value="15:30">3:30 PM</option>
+      <option value="16:00">4:00 PM</option><option value="16:30">4:30 PM</option>
+      <option value="17:00">5:00 PM</option><option value="17:30">5:30 PM</option>
+      <option value="18:00">6:00 PM</option><option value="18:30">6:30 PM</option>
+      <option value="19:00">7:00 PM</option><option value="19:30">7:30 PM</option>
+      <option value="20:00">8:00 PM</option><option value="20:30">8:30 PM</option>
+      <option value="21:00">9:00 PM</option><option value="21:30">9:30 PM</option>
+      <option value="22:00">10:00 PM</option><option value="22:30">10:30 PM</option>
+      <option value="23:00">11:00 PM</option><option value="23:30">11:30 PM</option>
+    </select>
+    <button class="pink" onclick="finish()">This works for me 💗</button>
+  </section>
+
+  <section id="s5" class="card">
+    <div class="icon wobble">💖</div><div class="floor-toys">🧸　🐱　🐾</div>
+    <h1>It's a date! 💗</h1>
+    <p>Glad you said yes. I'm already excited ❤️</p>
+    <div class="summary"><b>Our plan</b><div id="out"></div></div>
+    <button class="pink" onclick="show(6)">One more thing 💌</button>
+  </section>
+
+  <section id="s7" class="card">
+    <div class="icon wobble">💌</div>
+    <div class="floor-toys">🧸　🐱　💗　🐾</div>
+    <h1>A little message for me? 💕</h1>
+    <p>Tell me anything you want to say. I'll be waiting to read it. 🥰</p>
+    <textarea id="herMessage" maxlength="500" placeholder="Write your message here... 💗"></textarea>
+    <div class="charcount"><span id="count">0</span>/500</div>
+    <button class="pink" onclick="submitMessage()">Send my message 💌</button>
+  </section>
+
+  <section id="s6" class="card">
+    <div class="icon wobble">🥰</div><div class="floor-toys">🧸　🐱　🐶　🐾</div>
+    <h1>Can't wait to see you soon! 💗</h1>
+    <p class="greeting">I'm really excited for our date.<br>See you soon! ✨</p>
+    <div class="hearts">♥　♡　♥　♡　♥</div>
+    <button class="pink" onclick="show(7)">One last thing 💌</button>
+  </section>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
