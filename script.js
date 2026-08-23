@@ -8,7 +8,7 @@ let answers = {
   submittedAt: ""
 };
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzZ4qTwG_gX8RrBlo4uqfRFSPIlsOr5ZcmCcMn9Arss8KbV8yrb8RK_wIQdpq-RGrEo/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzUj85OBI35RRHEB5ayhEXw8P76VYlmpTjY4j4ELSWn77GcFxBw5NKt7YCZO4a1IHsG/exec";
 
 function show(n){
   document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
